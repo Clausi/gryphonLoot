@@ -27,6 +27,14 @@ GryphonLoot improves Blizzard's own loot window and roll frames instead of repla
 Both are on by default; turn them off in the addon options or with `/gryphonloot rolls off` and
 `/gryphonloot results off`, per character.
 
+### Loot log
+- Records the items (also won rolls) and money you loot, per character, until you reset it
+- A small window lists them newest first with money and vendor value; drag it, size it or use
+  **Edit Mode**
+- Reset it in the options, with `/gryphonloot log reset`, or automatically on each
+  login
+- `/gryphonloot log` shows it, `/gryphonloot log off` stops recording
+
 ## Options
 
 Options > AddOns > GryphonLoot, or `/gryphonloot options`.
@@ -38,3 +46,4 @@ Options > AddOns > GryphonLoot, or `/gryphonloot options`.
 - `/gryphonloot notify on|off` – automatic messages
 - `/gryphonloot rolls on|off` – choices of the group next to the roll frames
 - `/gryphonloot results on|off|test` – window with the results of loot rolls
+- `/gryphonloot log [on|off|reset]` – loot log

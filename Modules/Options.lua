@@ -100,12 +100,46 @@ local function RegisterLootRolls()
     Settings.CreateSlider(category, autoClose, autoCloseOptions, L["OPTIONS_LOOT_AUTO_CLOSE_TOOLTIP"])
 end
 
+-- Log of the looted items and money (Modules/LootLog.lua).
+local function RegisterLootLog()
+    local LootLog = ns.modules.LootLog
+    AddHeader(L["OPTIONS_LOOT_LOG_HEADER"])
+    AddCheckbox("LOOT_LOG", L["OPTIONS_LOOT_LOG"], L["OPTIONS_LOOT_LOG_TOOLTIP"], ns.charDefaults.lootLog,
+        function()
+            return LootLog:IsEnabled()
+        end,
+        function(value)
+            LootLog:SetEnabled(value)
+        end)
+    AddCheckbox("LOOT_LOG_RESET_ON_LOGIN", L["OPTIONS_LOOT_LOG_RESET_ON_LOGIN"],
+        L["OPTIONS_LOOT_LOG_RESET_ON_LOGIN_TOOLTIP"], ns.charDefaults.lootLogResetOnLogin,
+        function()
+            return LootLog:IsResetOnLogin()
+        end,
+        function(value)
+            LootLog:SetResetOnLogin(value)
+        end)
+    AddCheckbox("LOOT_LOG_SHOWN", L["OPTIONS_LOOT_LOG_SHOWN"], L["OPTIONS_LOOT_LOG_SHOWN_TOOLTIP"],
+        ns.charDefaults.lootLogShown,
+        function()
+            return LootLog:IsShown()
+        end,
+        function(value)
+            LootLog:SetShown(value)
+        end)
+    layout:AddInitializer(CreateSettingsButtonInitializer(L["OPTIONS_LOOT_LOG_RESET"],
+        L["OPTIONS_LOOT_LOG_RESET_BUTTON"], function()
+            LootLog:Reset()
+        end, L["OPTIONS_LOOT_LOG_RESET_TOOLTIP"], true))
+end
+
 function Options:OnInitialize()
     category = Settings.RegisterVerticalLayoutCategory(ns.name)
     layout = SettingsPanel:GetLayout(category)
     RegisterNotifications()
     RegisterLootWindow()
     RegisterLootRolls()
+    RegisterLootLog()
     Settings.RegisterAddOnCategory(category)
 end
 

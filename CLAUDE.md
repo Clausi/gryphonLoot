@@ -1,7 +1,8 @@
 # GryphonLoot
 
-World of Warcraft addon that improves looting: Blizzard's loot window (`Modules/LootWindow.lua`)
-and group loot rolls (`Modules/LootRolls.lua`, came from GryphonFrames).
+World of Warcraft addon that improves looting: Blizzard's loot window (`Modules/LootWindow.lua`),
+group loot rolls (`Modules/LootRolls.lua`, came from GryphonFrames) and a log of the loot
+(`Modules/LootLog.lua`).
 
 **Load the `wow-lua` skill (`.claude/skills/wow-lua/`) before working on code.** It holds the rules
 shared by all WoW addons (luacheck, locales, addon structure, Blizzard UI, secret values, names,
@@ -26,7 +27,7 @@ file only adds what is specific to GryphonLoot.
   frame that should be movable or configurable there. API docs: the comments in
   `Libs/LibEditMode/LibEditMode.lua` and https://github.com/p3lim-wow/LibEditMode/wiki.
 - Edit Mode positions are saved per layout name in `ns.db`, and the module handles LibEditMode's
-  `create`, `rename` and `delete` callbacks (see `Modules/LootRolls.lua`).
+  `create`, `rename` and `delete` callbacks (see `Modules/LootRolls.lua` and `Modules/LootLog.lua`).
 
 ## Blizzard's loot window
 
@@ -46,4 +47,4 @@ are not taken over.
 
 ## Commit scopes
 
-`loot-window`, `loot-rolls`, `options`, `core`, `locales`, `toc`.
+`loot-window`, `loot-rolls`, `loot-log`, `options`, `core`, `locales`, `toc`.

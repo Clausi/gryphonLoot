@@ -13,11 +13,16 @@ ns.defaults = {
     lootRolls = {
         layouts = {},
     },
+    -- Position and size of the loot log window per Edit Mode layout. Filled by Modules/LootLog.lua.
+    lootLog = {
+        layouts = {},
+    },
 }
 
 -- Per character (GryphonLootCharDB, ns.charDb): data and settings only the logged-in character needs.
 ns.charDefaults = {
-    -- Automatic messages (login, hints). Change with "/gryphonloot notify on|off".
+    -- Automatic messages (login, automatic reset of the loot log, hints). Change with
+    -- "/gryphonloot notify on|off".
     notifications = true,
     -- Who chose need, greed or pass, next to the roll frames (Modules/LootRolls.lua). Change with
     -- "/gryphonloot rolls on|off".
@@ -35,6 +40,17 @@ ns.charDefaults = {
     lootWindowValue = true,
     lootWindowBagSpace = true,
     lootWindowLootAll = true,
+    -- Records the looted items and money (Modules/LootLog.lua). Change with "/gryphonloot log on|off".
+    lootLog = true,
+    -- Empties the loot log on each login (not on /reload).
+    lootLogResetOnLogin = false,
+    -- The loot log window is open. Toggle with "/gryphonloot log".
+    lootLogShown = false,
+    -- The recorded loot until "/gryphonloot log reset": items oldest first as { link, count }, money in copper.
+    lootLogData = {
+        money = 0,
+        items = {},
+    },
 }
 
 -- Registers a module. A module may implement:

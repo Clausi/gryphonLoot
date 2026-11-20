@@ -22,5 +22,9 @@ First version, for WoW Forever. The loot roll features moved here from GryphonFr
   upgrade over the equipped item and a red tint if you cannot use it. A bar below the window
   shows the vendor value of the items, the free bag slots (red if not everything fits) and a
   "Loot All" button. Each part can be turned off in the options, per character.
+- Loot log: records the looted items, also won rolls, and money per character until it is reset.
+  A window shows it with the vendor value (`/gryphonloot log`, `/gryphonloot log on|off|reset`);
+  it can be moved and sized with the mouse or in Edit Mode. It can be reset in the options or
+  by command, and the option "Reset at Login" empties it on each login.
 - Addon options in Options > AddOns > GryphonLoot, or with `/gryphonloot options`.
 - Slash commands `/gryphonloot version`, `/gryphonloot notify on|off` and `/gryphonloot debug`.

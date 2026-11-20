@@ -2,7 +2,7 @@
 
 A World of Warcraft addon that improves looting: it marks the items in Blizzard's loot window and
 adds their value, the free bag space and a "Loot All" button, shows who chose need, greed or pass
-next to the roll frames and keeps the roll results in a small window.
+next to the roll frames, keeps the roll results in a small window and records your loot in a log.
 The loot roll features came from GryphonFrames.
 
 ## Supported clients
@@ -32,6 +32,7 @@ Core/Util.lua          Chat output, debug and memory helpers, defaults merging
 Core/Main.lua          Bootstrap: saved variables, module lifecycle, slash commands
 Modules/LootRolls.lua  Shows the choices of the group at loot rolls and keeps the results in a window
 Modules/LootWindow.lua Marks the items of the loot window, adds value, bag space and "Loot All"
+Modules/LootLog.lua    Records the looted items and money and shows them in a window
 Modules/Options.lua    Options page in the game settings ("/gryphonloot options")
 Libs/                  Embedded libraries, not in the repo (fetched by the packager)
 ```
@@ -79,13 +80,16 @@ Lint with [luacheck](https://github.com/lunarmodules/luacheck). Place `luacheck.
 - `/gryphonloot` – help
 - `/gryphonloot options` – open the addon options (also in Options > AddOns > GryphonLoot)
 - `/gryphonloot version` – show version
-- `/gryphonloot notify on|off` – automatic messages (login, hints) of the current
+- `/gryphonloot notify on|off` – automatic messages (login, loot log reset, hints) of the current
   character, default on
 - `/gryphonloot rolls on|off` – show who chose need, greed or pass next to the roll frames for
   the current character, default on
 - `/gryphonloot results on|off|test` – keep the results of loot rolls in a window for the
   current character, default on; `test` shows a made-up result (drag to move, corner to size, closing
   time in the options)
+- `/gryphonloot log [on|off|reset]` – without argument shows or hides the loot log window; `on|off`
+  turns recording on or off for the current character (default on), `reset` deletes the log (also
+  with the button in the options, or on each login with the option "Reset at Login", default off)
 - `/gryphonloot debug` – toggle debug output (after a `/reload`, also the memory each module keeps)
 
 Modules add subcommands with `ns:RegisterCommand(name, handler, helpLines)`.
@@ -95,8 +99,8 @@ Modules add subcommands with `ns:RegisterCommand(name, handler, helpLines)`.
 All options live in `Modules/Options.lua` (Esc > Options > AddOns > GryphonLoot), loaded after
 the other modules. Proxy settings read and write `ns.db` and `ns.charDb` through the getters and
 setters of the modules (e.g. `LootRolls:SetAutoClose`), so a change takes effect right away.
-The page has one section per feature: loot window and loot rolls. Size, position and look of the
-results window are set in Edit Mode, per layout.
+The page has one section per feature: loot window, loot rolls and loot log. Size, position and look
+of the results window, and position and size of the loot log, are set in Edit Mode, per layout.
 Opening the page by command is blocked in combat.
 
 ## License

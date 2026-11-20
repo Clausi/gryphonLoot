@@ -1,7 +1,7 @@
 ## Interface: 16001
 ## Title: GryphonLoot
-## Notes: Improves the loot window and loot rolls.
-## Notes-deDE: Verbessert das Beutefenster und das Würfeln um Beute.
+## Notes: Improves the loot window and loot rolls, and keeps a log of your loot.
+## Notes-deDE: Verbessert das Beutefenster und das Würfeln um Beute und führt ein Protokoll deiner Beute.
 ## Category: Loot
 ## Author: cklausl
 ## Version: 0.1.0
@@ -26,6 +26,7 @@ Core\Util.lua
 # Modules
 Modules\LootRolls.lua
 Modules\LootWindow.lua
+Modules\LootLog.lua
 Modules\Options.lua
 
 # Bootstrap (must be loaded last)
