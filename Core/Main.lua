@@ -40,19 +40,19 @@ ns:RegisterCommand("debug", function()
     ns:Print(ns.db.debug and L["DEBUG_ON"] or L["DEBUG_OFF"])
 end, { L["HELP_DEBUG"] })
 
--- "/gryphonloot chat on|off" sets the automatic chat messages, without argument shows the setting.
-ns:RegisterCommand("chat", function(args)
+-- "/gryphonloot notify on|off" sets the automatic messages, without argument shows the setting.
+ns:RegisterCommand("notify", function(args)
     local value = args:lower()
     if value == "on" then
-        ns.charDb.chatMessages = true
+        ns.charDb.notifications = true
     elseif value == "off" then
-        ns.charDb.chatMessages = false
+        ns.charDb.notifications = false
     elseif value ~= "" then
-        ns:Print(L["HELP_CHAT"])
+        ns:Print(L["HELP_NOTIFY"])
         return
     end
-    ns:Print(ns.charDb.chatMessages and L["CHAT_ON"] or L["CHAT_OFF"])
-end, { L["HELP_CHAT"] })
+    ns:Print(ns.charDb.notifications and L["NOTIFY_ON"] or L["NOTIFY_OFF"])
+end, { L["HELP_NOTIFY"] })
 
 local function PrintHelp()
     ns:Print(L["HELP_HEADER"])
