@@ -1,0 +1,31 @@
+## Interface: 16001
+## Title: GryphonLoot
+## Notes: Shows the choices of the group at loot rolls and keeps the results in a window.
+## Notes-deDE: Zeigt beim Würfeln um Beute die Wahl der Gruppe und hält die Ergebnisse in einem Fenster fest.
+## Category: Loot
+## Author: cklausl
+## Version: 0.1.0
+## SavedVariables: GryphonLootDB
+## SavedVariablesPerCharacter: GryphonLootCharDB
+## IconTexture: Interface\Icons\INV_Misc_Coin_02
+## X-Category: Loot
+## X-License: MIT
+
+# Libraries (fetched by the packager, see .pkgmeta)
+Libs\LibStub\LibStub.lua
+Libs\LibEditMode\embed.xml
+
+# Localization (enUS must be loaded first, it is the fallback)
+Locales\enUS.lua
+Locales\deDE.lua
+
+# Core
+Core\Init.lua
+Core\Util.lua
+
+# Modules
+Modules\LootRolls.lua
+Modules\Options.lua
+
+# Bootstrap (must be loaded last)
+Core\Main.lua
