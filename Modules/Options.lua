@@ -14,16 +14,16 @@ local function RegisterProxySetting(variable, varType, name, defaultValue, getVa
         defaultValue, getValue, setValue)
 end
 
-local function RegisterChatMessages()
-    local chatMessages = RegisterProxySetting("CHAT_MESSAGES", Settings.VarType.Boolean,
-        L["OPTIONS_CHAT_MESSAGES"], ns.charDefaults.chatMessages,
+local function RegisterNotifications()
+    local notifications = RegisterProxySetting("NOTIFICATIONS", Settings.VarType.Boolean,
+        L["OPTIONS_NOTIFICATIONS"], ns.charDefaults.notifications,
         function()
-            return ns.charDb.chatMessages
+            return ns.charDb.notifications
         end,
         function(value)
-            ns.charDb.chatMessages = value
+            ns.charDb.notifications = value
         end)
-    Settings.CreateCheckbox(category, chatMessages, L["OPTIONS_CHAT_MESSAGES_TOOLTIP"])
+    Settings.CreateCheckbox(category, notifications, L["OPTIONS_NOTIFICATIONS_TOOLTIP"])
 end
 
 -- Choices next to the roll frames and the results window (Modules/LootRolls.lua).
@@ -70,7 +70,7 @@ end
 
 function Options:OnInitialize()
     category = Settings.RegisterVerticalLayoutCategory(ns.name)
-    RegisterChatMessages()
+    RegisterNotifications()
     RegisterLootRolls()
     Settings.RegisterAddOnCategory(category)
 end

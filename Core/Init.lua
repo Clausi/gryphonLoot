@@ -17,8 +17,8 @@ ns.defaults = {
 
 -- Per character (GryphonLootCharDB, ns.charDb): data and settings only the logged-in character needs.
 ns.charDefaults = {
-    -- Automatic chat messages (login, hints). Change with "/gryphonloot chat on|off".
-    chatMessages = true,
+    -- Automatic messages (login, hints). Change with "/gryphonloot notify on|off".
+    notifications = true,
     -- Who chose need, greed or pass, next to the roll frames (Modules/LootRolls.lua). Change with
     -- "/gryphonloot rolls on|off".
     lootRollChoices = true,

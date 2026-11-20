@@ -28,6 +28,6 @@ Options > AddOns > GryphonLoot, or `/gryphonloot options`.
 
 - `/gryphonloot` – help
 - `/gryphonloot options` – open the addon options
-- `/gryphonloot chat on|off` – automatic chat messages
+- `/gryphonloot notify on|off` – automatic messages
 - `/gryphonloot rolls on|off` – choices of the group next to the roll frames
 - `/gryphonloot results on|off|test` – window with the results of loot rolls

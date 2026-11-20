@@ -19,4 +19,4 @@ First version, for WoW Forever. The loot roll features moved here from GryphonFr
   set time. Edit Mode also sets padding, opacity, background, text size, item icons and class
   colors, per layout, and shows a sample while the window is empty.
 - Addon options in Options > AddOns > GryphonLoot, or with `/gryphonloot options`.
-- Slash commands `/gryphonloot version`, `/gryphonloot chat on|off` and `/gryphonloot debug`.
+- Slash commands `/gryphonloot version`, `/gryphonloot notify on|off` and `/gryphonloot debug`.

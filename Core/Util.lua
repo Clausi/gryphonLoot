@@ -11,9 +11,9 @@ function ns:Print(message, ...)
 end
 
 -- Prints a message the addon shows on its own (not as the answer to a command). The user can turn
--- these off with "/gryphonloot chat off".
+-- these off with "/gryphonloot notify off".
 function ns:Notify(message, ...)
-    if self.charDb and self.charDb.chatMessages then
+    if self.charDb and self.charDb.notifications then
         self:Print(message, ...)
     end
 end

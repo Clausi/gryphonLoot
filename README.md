@@ -77,7 +77,7 @@ Lint with [luacheck](https://github.com/lunarmodules/luacheck). Place `luacheck.
 - `/gryphonloot` – help
 - `/gryphonloot options` – open the addon options (also in Options > AddOns > GryphonLoot)
 - `/gryphonloot version` – show version
-- `/gryphonloot chat on|off` – automatic chat messages (login, hints) of the current character,
+- `/gryphonloot notify on|off` – automatic messages (login, hints) of the current character,
   default on
 - `/gryphonloot rolls on|off` – show who chose need, greed or pass next to the roll frames for
   the current character, default on
