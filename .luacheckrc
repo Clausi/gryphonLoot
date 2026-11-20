@@ -45,8 +45,10 @@ read_globals = {
     "GetLootSlotInfo",
     "GetLootSlotLink",
     "GetLootSlotType",
+    "GetMoney",
     "GetMoneyString",
     "GetNumLootItems",
+    "issecretvalue",
     "LootSlot",
     "NUM_BAG_SLOTS",
     "HandleModifiedItemClick",
@@ -61,6 +63,8 @@ read_globals = {
     "LOOT_HISTORY_ALL_PASSED",
     "LOOT_HISTORY_PLAYER_DELIMITER",
     "LOOT_HISTORY_WAITING_ON",
+    "LOOT_ITEM_SELF",
+    "LOOT_ITEM_SELF_MULTIPLE",
     "HIGHLIGHT_FONT_COLOR",
     "RED_FONT_COLOR",
     "RAID_CLASS_COLORS",
@@ -68,6 +72,7 @@ read_globals = {
 
     -- UI helpers
     "CreateAtlasMarkup",
+    "CreateSettingsButtonInitializer",
     "CreateSettingsListSectionHeaderInitializer",
     "MinimalSliderWithSteppersMixin",
     "ScrollUtil",
