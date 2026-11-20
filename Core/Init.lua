@@ -26,6 +26,15 @@ ns.charDefaults = {
     lootRollResults = true,
     -- Seconds until the window closes by itself, 0 = stays open.
     lootRollResultsAutoClose = 0,
+    -- Marks on the items of the loot window (Modules/LootWindow.lua): item level, upgrade arrow and
+    -- red tint for items the character cannot use.
+    lootWindowItemLevel = true,
+    lootWindowUpgrades = true,
+    lootWindowUnusable = true,
+    -- Bar below the loot window: vendor value, free bag space and a "Loot All" button.
+    lootWindowValue = true,
+    lootWindowBagSpace = true,
+    lootWindowLootAll = true,
 }
 
 -- Registers a module. A module may implement:

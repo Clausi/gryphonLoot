@@ -1,10 +1,17 @@
 # GryphonLoot
 
-**Better group loot rolls for World of Warcraft: Forever.**
+**Better looting for World of Warcraft: Forever.**
 
-GryphonLoot improves Blizzard's own roll frames instead of replacing them.
+GryphonLoot improves Blizzard's own loot window and roll frames instead of replacing them.
 
 ## Features
+
+### Loot window
+- Item level on the icon of equipment
+- Green arrow for upgrades over what you wear, red tint for items you cannot use
+- Below the window: vendor value of the items, free bag slots (red if not everything fits) and a
+  **Loot All** button
+- Each part can be turned off in the options
 
 ### Choices of the group
 - See who chose need, greed or pass next to each roll frame, with all names in the tooltip
