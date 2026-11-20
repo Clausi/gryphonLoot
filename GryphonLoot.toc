@@ -1,7 +1,7 @@
 ## Interface: 16001
 ## Title: GryphonLoot
-## Notes: Shows the choices of the group at loot rolls and keeps the results in a window.
-## Notes-deDE: Zeigt beim Würfeln um Beute die Wahl der Gruppe und hält die Ergebnisse in einem Fenster fest.
+## Notes: Improves the loot window and loot rolls.
+## Notes-deDE: Verbessert das Beutefenster und das Würfeln um Beute.
 ## Category: Loot
 ## Author: cklausl
 ## Version: 0.1.0
@@ -25,6 +25,7 @@ Core\Util.lua
 
 # Modules
 Modules\LootRolls.lua
+Modules\LootWindow.lua
 Modules\Options.lua
 
 # Bootstrap (must be loaded last)

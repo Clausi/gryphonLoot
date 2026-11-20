@@ -1,7 +1,7 @@
 # GryphonLoot
 
-World of Warcraft addon that improves group loot rolls: it shows the choices of the group next to
-Blizzard's roll frames and keeps the results in a window. The features came from GryphonFrames.
+World of Warcraft addon that improves looting: Blizzard's loot window (`Modules/LootWindow.lua`)
+and group loot rolls (`Modules/LootRolls.lua`, came from GryphonFrames).
 
 **Load the `wow-lua` skill (`.claude/skills/wow-lua/`) before working on code.** It holds the rules
 shared by all WoW addons (luacheck, locales, addon structure, Blizzard UI, secret values, names,
@@ -28,6 +28,13 @@ file only adds what is specific to GryphonLoot.
 - Edit Mode positions are saved per layout name in `ns.db`, and the module handles LibEditMode's
   `create`, `rename` and `delete` callbacks (see `Modules/LootRolls.lua`).
 
+## Blizzard's loot window
+
+`Modules/LootWindow.lua` only adds own frames to `LootFrame`: marks on the item buttons (kept in a
+weak table, no fields on Blizzard's frames) and a bar as a child of `LootFrame`. Elements are
+decorated in the ScrollBox's `OnInitializedFrame` callback (called through `securecallfunction`)
+and again on `LOOT_SLOT_CHANGED`. Do not change its data provider, sorting, size or scripts.
+
 ## Locales
 
 `enUS` (base), `deDE`.
@@ -39,4 +46,4 @@ are not taken over.
 
 ## Commit scopes
 
-`loot-rolls`, `options`, `core`, `locales`, `toc`.
+`loot-window`, `loot-rolls`, `options`, `core`, `locales`, `toc`.

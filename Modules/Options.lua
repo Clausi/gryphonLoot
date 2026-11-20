@@ -2,11 +2,12 @@ local _, ns = ...
 local L = ns.L
 local Options = ns:RegisterModule("Options")
 
--- Options page in Blizzard's settings (Esc > Options > AddOns > GryphonLoot) as a vertical list.
--- The settings stay in ns.db and ns.charDb; proxy settings read and write them there through the
--- getters and setters of the modules, so a change takes effect right away.
+-- Options page in Blizzard's settings (Esc > Options > AddOns > GryphonLoot) as a vertical list
+-- with one section per feature. The settings stay in ns.db and ns.charDb; proxy settings read and
+-- write them there through the getters and setters of the modules, so a change takes effect right
+-- away.
 
-local category
+local category, layout
 
 -- Proxy setting variables must be unique among all settings of the game and addons.
 local function RegisterProxySetting(variable, varType, name, defaultValue, getValue, setValue)
@@ -14,40 +15,71 @@ local function RegisterProxySetting(variable, varType, name, defaultValue, getVa
         defaultValue, getValue, setValue)
 end
 
+local function AddHeader(text)
+    layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(text))
+end
+
+local function AddCheckbox(variable, name, tooltip, defaultValue, getValue, setValue)
+    local setting = RegisterProxySetting(variable, Settings.VarType.Boolean, name, defaultValue, getValue, setValue)
+    Settings.CreateCheckbox(category, setting, tooltip)
+end
+
 local function RegisterNotifications()
-    local notifications = RegisterProxySetting("NOTIFICATIONS", Settings.VarType.Boolean,
-        L["OPTIONS_NOTIFICATIONS"], ns.charDefaults.notifications,
+    AddCheckbox("NOTIFICATIONS", L["OPTIONS_NOTIFICATIONS"], L["OPTIONS_NOTIFICATIONS_TOOLTIP"],
+        ns.charDefaults.notifications,
         function()
             return ns.charDb.notifications
         end,
         function(value)
             ns.charDb.notifications = value
         end)
-    Settings.CreateCheckbox(category, notifications, L["OPTIONS_NOTIFICATIONS_TOOLTIP"])
+end
+
+-- Marks on the items and the bar below Blizzard's loot window (Modules/LootWindow.lua).
+local function RegisterLootWindow()
+    local LootWindow = ns.modules.LootWindow
+    AddHeader(L["OPTIONS_LOOT_WINDOW_HEADER"])
+    local settings = {
+        { key = "lootWindowItemLevel", variable = "LOOT_WINDOW_ITEM_LEVEL", label = "OPTIONS_LOOT_WINDOW_ITEM_LEVEL" },
+        { key = "lootWindowUpgrades", variable = "LOOT_WINDOW_UPGRADES", label = "OPTIONS_LOOT_WINDOW_UPGRADES" },
+        { key = "lootWindowUnusable", variable = "LOOT_WINDOW_UNUSABLE", label = "OPTIONS_LOOT_WINDOW_UNUSABLE" },
+        { key = "lootWindowValue", variable = "LOOT_WINDOW_VALUE", label = "OPTIONS_LOOT_WINDOW_VALUE" },
+        { key = "lootWindowBagSpace", variable = "LOOT_WINDOW_BAG_SPACE", label = "OPTIONS_LOOT_WINDOW_BAG_SPACE" },
+        { key = "lootWindowLootAll", variable = "LOOT_WINDOW_LOOT_ALL", label = "OPTIONS_LOOT_WINDOW_LOOT_ALL" },
+    }
+    for _, entry in ipairs(settings) do
+        local key = entry.key
+        AddCheckbox(entry.variable, L[entry.label], L[entry.label .. "_TOOLTIP"], ns.charDefaults[key],
+            function()
+                return LootWindow:IsEnabled(key)
+            end,
+            function(value)
+                LootWindow:SetEnabled(key, value)
+            end)
+    end
 end
 
 -- Choices next to the roll frames and the results window (Modules/LootRolls.lua).
 local function RegisterLootRolls()
     local LootRolls = ns.modules.LootRolls
-    local choices = RegisterProxySetting("LOOT_ROLL_CHOICES", Settings.VarType.Boolean,
-        L["OPTIONS_LOOT_CHOICES"], ns.charDefaults.lootRollChoices,
+    AddHeader(L["OPTIONS_LOOT_ROLLS_HEADER"])
+    AddCheckbox("LOOT_ROLL_CHOICES", L["OPTIONS_LOOT_CHOICES"], L["OPTIONS_LOOT_CHOICES_TOOLTIP"],
+        ns.charDefaults.lootRollChoices,
         function()
             return LootRolls:AreChoicesEnabled()
         end,
         function(value)
             LootRolls:SetChoicesEnabled(value)
         end)
-    Settings.CreateCheckbox(category, choices, L["OPTIONS_LOOT_CHOICES_TOOLTIP"])
 
-    local results = RegisterProxySetting("LOOT_ROLL_RESULTS", Settings.VarType.Boolean,
-        L["OPTIONS_LOOT_RESULTS"], ns.charDefaults.lootRollResults,
+    AddCheckbox("LOOT_ROLL_RESULTS", L["OPTIONS_LOOT_RESULTS"], L["OPTIONS_LOOT_RESULTS_TOOLTIP"],
+        ns.charDefaults.lootRollResults,
         function()
             return LootRolls:AreResultsEnabled()
         end,
         function(value)
             LootRolls:SetResultsEnabled(value)
         end)
-    Settings.CreateCheckbox(category, results, L["OPTIONS_LOOT_RESULTS_TOOLTIP"])
 
     local autoClose = RegisterProxySetting("LOOT_ROLL_AUTO_CLOSE", Settings.VarType.Number,
         L["OPTIONS_LOOT_AUTO_CLOSE"], ns.charDefaults.lootRollResultsAutoClose,
@@ -70,7 +102,9 @@ end
 
 function Options:OnInitialize()
     category = Settings.RegisterVerticalLayoutCategory(ns.name)
+    layout = SettingsPanel:GetLayout(category)
     RegisterNotifications()
+    RegisterLootWindow()
     RegisterLootRolls()
     Settings.RegisterAddOnCategory(category)
 end
