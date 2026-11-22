@@ -4,7 +4,7 @@
 ## Notes-deDE: Verbessert das Beutefenster und das Würfeln um Beute und führt ein Protokoll deiner Beute.
 ## Category: Loot
 ## Author: cklausl
-## Version: 0.1.0
+## Version: 1.0.0
 ## SavedVariables: GryphonLootDB
 ## SavedVariablesPerCharacter: GryphonLootCharDB
 ## IconTexture: Interface\Icons\INV_Misc_Coin_02
