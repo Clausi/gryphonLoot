@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-11-22
+
+First release on CurseForge and Wago Addons. The addon is unchanged since 0.1.0.
+
 ## [0.1.0] - 2026-11-20
 
 First release, for WoW Forever. The loot roll features moved here from GryphonFrames.
