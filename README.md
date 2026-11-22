@@ -57,9 +57,13 @@ The packager embeds these libraries from the externals in `.pkgmeta`:
    git push origin vX.Y.Z
    ```
 
-The release workflow (`.github/workflows/release.yml`) builds the package with the BigWigs
-packager and uploads it as a GitHub release, and to CurseForge once `## X-Curse-Project-ID` is set
-in the TOC and the `CF_API_KEY` secret exists.
+The release workflow (`.github/workflows/release.yml`) runs luacheck, builds the package with the
+[BigWigs packager](https://github.com/BigWigsMods/packager) and uploads it to
+[CurseForge](https://www.curseforge.com/wow/addons/gryphon-loot) (project ID from
+`X-Curse-Project-ID` in the TOC), [Wago Addons](https://addons.wago.io/addons/gryphonloot)
+(`X-Wago-ID`) and as a GitHub release; WoWInterface once `X-WoWI-ID` is set. Game versions come
+from `## Interface`. It needs the repository secrets `CF_API_KEY` (a CurseForge API token),
+`WAGO_API_TOKEN` (a Wago Addons API key) and `WOWI_API_TOKEN` (a WoWInterface API token).
 
 ## Localization
 

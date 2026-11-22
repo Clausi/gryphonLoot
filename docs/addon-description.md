@@ -47,3 +47,5 @@ Options > AddOns > GryphonLoot, or `/gryphonloot options`.
 - `/gryphonloot rolls on|off` – choices of the group next to the roll frames
 - `/gryphonloot results on|off|test` – window with the results of loot rolls
 - `/gryphonloot log [on|off|reset]` – loot log
+
+Also available on [CurseForge](https://www.curseforge.com/wow/addons/gryphon-loot) and [Wago Addons](https://addons.wago.io/addons/gryphonloot).

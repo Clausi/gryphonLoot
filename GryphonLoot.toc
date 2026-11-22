@@ -10,6 +10,9 @@
 ## IconTexture: Interface\Icons\INV_Misc_Coin_02
 ## X-Category: Loot
 ## X-License: MIT
+## X-Website: https://github.com/Clausi/gryphonLoot
+## X-Curse-Project-ID: 1819382
+## X-Wago-ID: kNMPo0Gz
 
 # Libraries (fetched by the packager, see .pkgmeta)
 Libs\LibStub\LibStub.lua
