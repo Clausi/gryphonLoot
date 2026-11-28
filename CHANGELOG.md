@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- After the GryphonLoot options page was shown, changing a Blizzard setting such as an action bar
+  could taint Edit Mode: opening it then failed with errors about secret values and blocked
+  targeting. The options page now uses its own controls instead of Blizzard's settings list. The
+  page can no longer be found with the search of the settings.
+
 ## [1.0.0] - 2026-11-22
 
 First release on CurseForge and Wago Addons. The addon is unchanged since 0.1.0.

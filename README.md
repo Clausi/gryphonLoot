@@ -29,6 +29,7 @@ Locales/enUS.lua       Base locale (every key), fallback for all languages
 Locales/deDE.lua       German translation
 Core/Init.lua          Namespace, saved variable defaults, module, command and event registry
 Core/Util.lua          Chat output, debug and memory helpers, defaults merging
+Core/OptionsPanel.lua  Options page with own controls on a canvas category (no Blizzard settings list)
 Core/Main.lua          Bootstrap: saved variables, module lifecycle, slash commands
 Modules/LootRolls.lua  Shows the choices of the group at loot rolls and keeps the results in a window
 Modules/LootWindow.lua Marks the items of the loot window, adds value, bag space and "Loot All"
@@ -101,8 +102,12 @@ Modules add subcommands with `ns:RegisterCommand(name, handler, helpLines)`.
 ## Options
 
 All options live in `Modules/Options.lua` (Esc > Options > AddOns > GryphonLoot), loaded after
-the other modules. Proxy settings read and write `ns.db` and `ns.charDb` through the getters and
-setters of the modules (e.g. `LootRolls:SetAutoClose`), so a change takes effect right away.
+the other modules. The page is built with `Core/OptionsPanel.lua`: a canvas category with own
+checkboxes, slider and button, not Blizzard's vertical settings list. That list reuses its control
+frames for every page and carries an addon's taint into Blizzard's settings (and from there into
+Edit Mode). The controls read and
+write `ns.db` and `ns.charDb` through the getters and setters of the modules (e.g.
+`LootRolls:SetAutoClose`), so a change takes effect right away.
 The page has one section per feature: loot window, loot rolls and loot log. Size, position and look
 of the results window, and position and size of the loot log, are set in Edit Mode, per layout.
 Opening the page by command is blocked in combat.
