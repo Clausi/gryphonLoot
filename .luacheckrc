@@ -72,12 +72,9 @@ read_globals = {
 
     -- UI helpers
     "CreateAtlasMarkup",
-    "CreateSettingsButtonInitializer",
-    "CreateSettingsListSectionHeaderInitializer",
     "MinimalSliderWithSteppersMixin",
     "ScrollUtil",
     "Settings",
-    "SettingsPanel",
 
     -- Frames
     "DEFAULT_CHAT_FRAME",
